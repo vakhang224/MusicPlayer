@@ -14,17 +14,22 @@
     "expo": "~53.0.17",
     "expo-constants": "~17.1.7",
     "expo-dev-client": "~5.2.4",
+    "expo-linear-gradient": "~14.1.5",
     "expo-linking": "~7.1.7",
     "expo-router": "~5.1.3",
     "expo-status-bar": "~2.2.3",
     "firebase": "^11.10.0",
     "react": "19.0.0",
     "react-native": "0.79.5",
+    "react-native-awesome-slider": "^2.9.0",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-image-colors": "1.5.2",
     "react-native-loader-kit": "^3.0.0",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "react-native-track-player": "^4.1.1-nightly-e8701be9f7876ae3c80d7cfdfca7e90c40d6c389"
+    "react-native-track-player": "^4.1.1-nightly-e8701be9f7876ae3c80d7cfdfca7e90c40d6c389",
+    "ts-pattern": "^5.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

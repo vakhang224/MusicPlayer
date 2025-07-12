@@ -3,6 +3,7 @@ import { trackPlayer } from "@/hooks/trackPlayer"
 import { SplashScreen, Stack } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { useCallback } from "react"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { SafeAreaProvider } from "react-native-safe-area-context"
 
 SplashScreen.preventAutoHideAsync()
@@ -22,8 +23,10 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <RootNavigation/>
-      <StatusBar style="auto"/>
+      <GestureHandlerRootView style={{flex:1}}>
+        <RootNavigation/>
+        <StatusBar style="auto"/>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   )
 }
