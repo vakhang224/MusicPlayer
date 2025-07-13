@@ -1,5 +1,5 @@
 import { MovingText } from "@/components/MovingText";
-import { PlayerControl } from "@/components/PlayerControl";
+import { PlayerControl, PlayPauseButton, SkipToBackButton, SkipToNextButton } from "@/components/PlayerControl";
 import { PlayerProgressBar } from "@/components/PlayerProgressBar";
 import { unknownTracksImageUri } from "@/constants/images";
 import { colors, screenPadding } from "@/constants/token";
@@ -38,14 +38,14 @@ const PlayerScreen = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <DismissPlayer />
                 <TrackTitle />
-                <FontAwesome 
-                    name={isFavorite ? 'heart' : 'heart-o'} 
-                    size={30} 
-                    color={isFavorite ? colors.primary : colors.icon} 
+                <FontAwesome
+                    name={isFavorite ? 'heart' : 'heart-o'}
+                    size={30}
+                    color={isFavorite ? colors.primary : colors.icon}
                     style={{ position: 'absolute', right: 0, top: top + 25 }}
                     onPress={toggleFavorite} />
             </View>
-            <View style={{ flex: 1, marginTop: top + 100, marginBottom: bottom }}>
+            <View style={{ flex: 1, marginTop: top + 95, marginBottom: bottom }}>
                 <View style={styles.artworkImageContainer}>
                     <Image
                         source={{
@@ -54,8 +54,12 @@ const PlayerScreen = () => {
                         resizeMode="cover" style={styles.artworkImage}
                     />
                 </View>
-                <PlayerProgressBar style={{marginTop: 70}}/>
-                <PlayerControl style={{marginTop: 30}}/>
+                <PlayerProgressBar style={{ marginTop: 70 }} />
+                <View style={[{ marginTop: 30 }, styles.playerControlRow]}>
+                    <SkipToBackButton />
+                    <PlayPauseButton iconSize={60} />
+                    <SkipToNextButton />
+                </View>
             </View>
             <View>
 
@@ -102,15 +106,15 @@ const TrackTitle = () => {
             justifyContent: 'flex-start',
             width: '75%',
         }}>
-            <View style={{overflow: "hidden"}}>
-                <MovingText 
-                    text={activeTrack?.title ?? ''} 
-                    animationThreshold={30} 
-                    style={{...defaultStyles.text, overflow: "hidden"}} 
+            <View style={{ overflow: "hidden" }}>
+                <MovingText
+                    text={activeTrack?.title ?? ''}
+                    animationThreshold={30}
+                    style={{ ...defaultStyles.text, overflow: "hidden" }}
                 />
             </View>
-            <Text 
-                style={{...defaultStyles.text, fontSize: 14, color: colors.text}}
+            <Text
+                style={{ ...defaultStyles.text, fontSize: 14, color: colors.text }}
             >
                 {activeTrack?.artist ?? ''}
             </Text>
@@ -142,7 +146,13 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover',
         borderRadius: 12,
+    },
+    playerControlRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
     }
+
 })
 
 export default PlayerScreen
