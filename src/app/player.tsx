@@ -1,4 +1,6 @@
 import { MovingText } from "@/components/MovingText";
+import { PlayerControl } from "@/components/PlayerControl";
+import { PlayerProgressBar } from "@/components/PlayerProgressBar";
 import { unknownTracksImageUri } from "@/constants/images";
 import { colors, screenPadding } from "@/constants/token";
 import { defaultStyles } from "@/styles";
@@ -52,13 +54,14 @@ const PlayerScreen = () => {
                         resizeMode="cover" style={styles.artworkImage}
                     />
                 </View>
+                <PlayerProgressBar style={{marginTop: 80}}/>
+                <PlayerControl style={{marginTop: 40}}/>
             </View>
-            <PlayerProgressBar/>
             <View>
-                <PlayerControl/>
-                <Repeat/>
+
+                {/* <Repeat/> */}
             </View>
-            <PlayerVolume/>
+            {/* <PlayerVolume/> */}
         </View>
     );
 }
@@ -138,7 +141,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         resizeMode: 'cover',
-        borderRadius: 12
+        borderRadius: 12,
     }
 })
 
