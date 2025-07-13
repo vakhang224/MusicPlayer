@@ -45,7 +45,7 @@ const PlayerScreen = () => {
                     style={{ position: 'absolute', right: 0, top: top + 25 }}
                     onPress={toggleFavorite} />
             </View>
-            <View style={{ flex: 1, marginTop: top + 70, marginBottom: bottom }}>
+            <View style={{ flex: 1, marginTop: top + 100, marginBottom: bottom }}>
                 <View style={styles.artworkImageContainer}>
                     <Image
                         source={{
@@ -54,8 +54,8 @@ const PlayerScreen = () => {
                         resizeMode="cover" style={styles.artworkImage}
                     />
                 </View>
-                <PlayerProgressBar style={{marginTop: 80}}/>
-                <PlayerControl style={{marginTop: 40}}/>
+                <PlayerProgressBar style={{marginTop: 70}}/>
+                <PlayerControl style={{marginTop: 30}}/>
             </View>
             <View>
 
