@@ -12,7 +12,7 @@ export const PlayerProgressBar = ({style}: ViewProps) => {
     const isSliding = useSharedValue(false);
     const progress = useSharedValue(0);
     const min = useSharedValue(0);
-    const max = useSharedValue(0);
+    const max = useSharedValue(1);
 
     const trackTime = formatSecondsToMinute(position);
     const remainingTime = formatSecondsToMinute(duration - position);

@@ -30,7 +30,7 @@ export const TracksList = ({ tracks }: Props) => {
             scrollEnabled={false}
             ListEmptyComponent={
                 <View>
-                    <Text style={utilsStyles.emptyComponentText}>No song match your search</Text>
+                    <Text style={utilsStyles.emptyComponentText}>Nothing here!</Text>
                 </View>
             }
         />

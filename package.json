@@ -29,7 +29,8 @@
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
     "react-native-track-player": "^4.1.1-nightly-e8701be9f7876ae3c80d7cfdfca7e90c40d6c389",
-    "ts-pattern": "^5.7.1"
+    "ts-pattern": "^5.7.1",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

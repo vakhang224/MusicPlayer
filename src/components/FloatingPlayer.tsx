@@ -61,7 +61,8 @@ const styles = StyleSheet.create({
   },
   trackTitle: {
     ...defaultStyles.text,
-    fontSize: 18,
+    fontSize: 16,
+    marginBottom:5,
     fontWeight: '600',
     paddingLeft: 10,
   },

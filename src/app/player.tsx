@@ -1,18 +1,24 @@
 import { MovingText } from "@/components/MovingText";
 import { PlayerControl, PlayPauseButton, SkipToBackButton, SkipToNextButton } from "@/components/PlayerControl";
 import { PlayerProgressBar } from "@/components/PlayerProgressBar";
+import { PlayerRepeat } from "@/components/PlayerRepeat";
+import { PlayerVolumeBar } from "@/components/PlayerVolumeBar";
 import { unknownTracksImageUri } from "@/constants/images";
 import { colors, screenPadding } from "@/constants/token";
+import { usePlayerBackground } from "@/hooks/usePlayerBackground";
 import { defaultStyles } from "@/styles";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from "@expo/vector-icons/build/FontAwesome";
+import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import { ActivityIndicator, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ImageColors from "react-native-image-colors";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useActiveTrack } from "react-native-track-player";
+import { RepeatMode, useActiveTrack } from "react-native-track-player";
 
 const PlayerScreen = () => {
     const activeTrack = useActiveTrack();
+    const {imageColors} = usePlayerBackground(activeTrack?.artwork ?? unknownTracksImageUri)
 
     const { top, bottom } = useSafeAreaInsets();
 
@@ -34,7 +40,15 @@ const PlayerScreen = () => {
         );
 
     return (
-        <View style={styles.playerLayout}>
+        <LinearGradient
+            style={{ flex: 1 }}
+            colors={
+                imageColors && imageColors.dominant && imageColors.average
+                    ? [imageColors.dominant, imageColors.average]
+                    : [colors.background, colors.background]
+            }
+        >
+                    <View style={styles.playerLayout}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <DismissPlayer />
                 <TrackTitle />
@@ -59,14 +73,17 @@ const PlayerScreen = () => {
                     <SkipToBackButton />
                     <PlayPauseButton iconSize={60} />
                     <SkipToNextButton />
-                </View>
-            </View>
-            <View>
 
-                {/* <Repeat/> */}
+                </View>
+                <View
+                    style={{ alignItems: 'center', marginTop: 30 }}>
+                    <PlayerRepeat />
+                </View>
+                <PlayerVolumeBar style={{ marginTop: 20 }} />
             </View>
-            {/* <PlayerVolume/> */}
+
         </View>
+        </LinearGradient>
     );
 }
 

@@ -3,8 +3,9 @@ import { TracksList } from "@/components/TracksList";
 import { colors, fontSize, screenPadding } from "@/constants/token";
 import { navigationSearch } from "@/hooks/navigationSearch";
 import { fetchTracks } from "@/services/trackService";
+import { useLibraryStore, useTracks } from "@/store/library";
 import { defaultStyles } from "@/styles";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Platform, ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Track } from "react-native-track-player";
@@ -16,30 +17,42 @@ const SongsScreen = () => {
     },
   });
 
-  const [tracks, setTracks] = useState<Track[]>([]);
+  const tracks = useTracks();
+  const fetch = useLibraryStore((state) => state.fetch);
+  const hasFetched = useRef(false);
+
+
+
+  // const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadTracks = async () => {
-      try {
-        const data = await fetchTracks();
-        // Convert rating to correct type if necessary
-        const mappedData = data.map((track) => ({
-          ...track,
-          rating: track.rating as any, // Cast or map to RatingType if needed
-        }));
-        setTracks(mappedData);
-        setFilteredTracks(mappedData); // gán luôn cho danh sách lọc
-      } catch (error) {
-        console.error("Error fetching tracks:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!hasFetched.current) {
+      fetch();
+      hasFetched.current = true;
+    }
+  }, [])
+  // useEffect(() => {
+  //   const loadTracks = async () => {
+  //     try {
+  //       const data = await fetchTracks();
+  //       // Convert rating to correct type if necessary
+  //       const mappedData = data.map((track) => ({
+  //         ...track,
+  //         rating: track.rating as any, // Cast or map to RatingType if needed
+  //       }));
+  //       setTracks(mappedData);
+  //       setFilteredTracks(mappedData); // gán luôn cho danh sách lọc
+  //     } catch (error) {
+  //       console.error("Error fetching tracks:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    loadTracks();
-  }, []);
+  //   loadTracks();
+  // }, []);
 
   // Lọc khi search thay đổi
   useEffect(() => {
@@ -66,7 +79,7 @@ const SongsScreen = () => {
         contentInsetAdjustmentBehavior="automatic"
         showsVerticalScrollIndicator={false}
       >
-        <Text style={{ color: colors.text , fontSize: fontSize.lg, textAlign: "center", fontWeight:700, marginBottom:20, marginTop:50}}>Songs</Text>
+        <Text style={{ color: colors.text, fontSize: fontSize.lg, textAlign: "center", fontWeight: 700, marginBottom: 20, marginTop: 50 }}>Songs</Text>
 
         {Platform.OS === "android" && (
           <SearchBar
@@ -76,11 +89,7 @@ const SongsScreen = () => {
           />
         )}
 
-        {loading ? (
-          <ActivityIndicator size="large" />
-        ) : (
-          <TracksList tracks={filteredTracks} />
-        )}
+        <TracksList tracks={filteredTracks} />
       </ScrollView>
     </View>
   );
