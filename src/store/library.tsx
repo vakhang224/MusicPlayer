@@ -1,30 +1,9 @@
-import { TrackWithPlaylist } from "@/helpers/type";
+import { Artist, TrackWithPlaylist } from "@/helpers/type";
 import { fetchTracks } from "@/services/trackService";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, } from "react";
 import { Track } from "react-native-track-player";
 import { create } from "zustand";
 
-export const useFirebase = () => {
-  const [tracks, setTracks] = useState<Track[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadTracks = async () => {
-      try {
-        const data = await fetchTracks();
-        setTracks(data);
-      } catch (error) {
-        console.error("Error fetching tracks:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadTracks();
-  }, []);
-
-  return { tracks, loading };
-};
 
 interface LibraryState {
     tracks: TrackWithPlaylist[];
@@ -58,4 +37,23 @@ export const useFavorites = () => {
   )
 
   return { favorites, toggleTrackFavorite }
+}
+
+export const useArtists = () => {
+  const tracks = useLibraryStore((state) => state.tracks);
+
+  return useMemo(() => {
+    return tracks.reduce((acc, track) => {
+      const existingArtist = acc.find((artist) => artist.name === track.artist)
+      if (existingArtist) {
+        existingArtist.tracks.push(track)
+      } else {
+        acc.push({
+          name: track.artist ?? 'Unknown',
+          tracks: [track]
+        })
+      }
+      return acc
+    }, [] as Artist[])
+  }, [tracks]);
 }

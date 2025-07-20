@@ -1,9 +1,9 @@
 export const colors = {
     primary: '#05fae5',
     background: '#000000',
-    text: '#fff',
+    text: '#ffffff',
     textMuted: '#9ca3af',
-    icon: '#fff',
+    icon: '#ffffff',
     maxTrackTintColor: 'rgba(255,255,255,0.4)',
     minTrackTintColor: 'rgba(255,255,255,0.6)',
     searchBarBackground: '#181818',

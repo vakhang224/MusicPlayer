@@ -1,6 +1,7 @@
 import { SearchBar } from "@/components/SearchBar";
 import { TracksList } from "@/components/TracksList";
 import { colors, fontSize, screenPadding } from "@/constants/token";
+import { generateSongListId } from "@/helpers/timeHandle";
 import { navigationSearch } from "@/hooks/navigationSearch";
 import { fetchTracks } from "@/services/trackService";
 import { useLibraryStore, useTracks } from "@/store/library";
@@ -11,17 +12,11 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Track } from "react-native-track-player";
 
 const SongsScreen = () => {
-  const { search, setSearch } = navigationSearch({
-    searchBarOptions: {
-      placeholder: "Search songs",
-    },
-  });
+  const { search, setSearch } = navigationSearch({});
 
   const tracks = useTracks();
   const fetch = useLibraryStore((state) => state.fetch);
   const hasFetched = useRef(false);
-
-
 
   // const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
@@ -67,8 +62,6 @@ const SongsScreen = () => {
     }
   }, [search, tracks]);
 
-  const insets = useSafeAreaInsets();
-
   return (
     <View style={defaultStyles.container}>
       <ScrollView
@@ -81,15 +74,15 @@ const SongsScreen = () => {
       >
         <Text style={{ color: colors.text, fontSize: fontSize.lg, textAlign: "center", fontWeight: 700, marginBottom: 20, marginTop: 50 }}>Songs</Text>
 
-        {Platform.OS === "android" && (
-          <SearchBar
-            value={search}
-            onChangeText={setSearch}
-            placeholder="Search songs"
-          />
-        )}
 
-        <TracksList tracks={filteredTracks} />
+        <SearchBar
+          value={search}
+          onChangeText={setSearch}
+          placeholder="Search songs"
+        />
+
+
+        <TracksList id={generateSongListId('songs', search)} tracks={filteredTracks} />
       </ScrollView>
     </View>
   );
