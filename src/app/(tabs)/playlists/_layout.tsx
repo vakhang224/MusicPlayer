@@ -1,3 +1,4 @@
+import { colors } from "@/constants/token"
 import { defaultStyles } from "@/styles"
 import { Stack } from "expo-router"
 import { View } from "react-native"
@@ -11,6 +12,18 @@ const PlaylistsScreenLayout = () => {
                     headerTitle: 'Playlists',
                     headerShown:false
                 }}/>
+
+                <Stack.Screen
+                    name='[name]'
+                    options={{
+                        headerTitle: '',
+                        headerBackVisible: true,
+                        headerStyle:{
+                            backgroundColor: colors.background,
+                        },
+                        headerTintColor: colors.primary
+                    }}
+                />
             </Stack>
         </View>
     )

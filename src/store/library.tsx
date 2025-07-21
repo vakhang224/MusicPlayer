@@ -1,4 +1,5 @@
-import { Artist, TrackWithPlaylist } from "@/helpers/type";
+import { unknownTracksImageUri } from "@/constants/images";
+import { Artist, Playlist, TrackWithPlaylist } from "@/helpers/type";
 import { fetchTracks } from "@/services/trackService";
 import { useMemo, } from "react";
 import { Track } from "react-native-track-player";
@@ -57,3 +58,33 @@ export const useArtists = () => {
     }, [] as Artist[])
   }, [tracks]);
 }
+
+
+export const usePlaylists = () => {
+  const tracks = useLibraryStore((state) => state.tracks)
+
+  const playlists = useMemo(() => {
+    return tracks.reduce((acc, track) => {
+      track.playlist?.forEach((playlistName: any) => {
+        const existingPlaylist = acc.find((playlist) => playlist.name === playlistName)
+
+        if (existingPlaylist) {
+          existingPlaylist.tracks.push(track)
+        } else {
+          acc.push({
+            name: playlistName,
+            tracks: [track],
+            artworkPreview: track.artwork ?? unknownTracksImageUri,
+          })
+        }
+      })
+      return acc
+    }, [] as Playlist[])
+  }, [tracks])
+
+  const addToPlaylist = useLibraryStore((state) => state.addToPlaylist)
+
+  return { playlists, addToPlaylist }
+}
+
+
