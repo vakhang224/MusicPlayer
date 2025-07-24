@@ -6,8 +6,9 @@ import { PlayerVolumeBar } from "@/components/PlayerVolumeBar";
 import { unknownTracksImageUri } from "@/constants/images";
 import { colors, screenPadding } from "@/constants/token";
 import { usePlayerBackground } from "@/hooks/usePlayerBackground";
+import { useTrackPlayerFavorite } from "@/hooks/useTrackPlayerFavorite";
 import { defaultStyles } from "@/styles";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import { FontAwesome6 } from "@expo/vector-icons";
 import FontAwesome from "@expo/vector-icons/build/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
@@ -22,16 +23,7 @@ const PlayerScreen = () => {
 
     const { top, bottom } = useSafeAreaInsets();
 
-    let isFavorite = false;
-
-    const toggleFavorite = () => {
-        if (isFavorite) {
-            isFavorite = false;
-        } else {
-            isFavorite = true;
-        }
-    }
-
+    const {isFavorites, toggleFavorite} = useTrackPlayerFavorite()
     if (!activeTrack)
         return (
             <View style={[defaultStyles.container, { justifyContent: 'center' }]}>
@@ -53,9 +45,9 @@ const PlayerScreen = () => {
                 <DismissPlayer />
                 <TrackTitle />
                 <FontAwesome
-                    name={isFavorite ? 'heart' : 'heart-o'}
+                    name={isFavorites ? 'heart' : 'heart-o'}
                     size={30}
-                    color={isFavorite ? colors.primary : colors.icon}
+                    color={isFavorites ? colors.primary : colors.icon}
                     style={{ position: 'absolute', right: 0, top: top + 25 }}
                     onPress={toggleFavorite} />
             </View>
@@ -97,14 +89,11 @@ const DismissPlayer = () => {
     return (
         <View style={{
             position: 'absolute',
-            top: top + 25,
-            left: 0,
-            right: 320,
-            flexDirection: 'row',
-            justifyContent: 'center',
+            top: top + 30,
+            left: 5
         }}>
             <TouchableOpacity onPress={dismissPlayerLayout}>
-                <AntDesign name="shrink" size={32} color="white" />
+                <FontAwesome6 name="minimize" size={24} color="white" />
             </TouchableOpacity>
         </View>
     );
@@ -121,12 +110,12 @@ const TrackTitle = () => {
             right: 0,
             flexDirection: 'column',
             justifyContent: 'flex-start',
-            width: '75%',
+            width: '70%',
         }}>
             <View style={{ overflow: "hidden" }}>
                 <MovingText
                     text={activeTrack?.title ?? ''}
-                    animationThreshold={30}
+                    animationThreshold={10}
                     style={{ ...defaultStyles.text, overflow: "hidden" }}
                 />
             </View>

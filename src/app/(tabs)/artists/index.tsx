@@ -47,7 +47,7 @@ const ArtistsScreen = () => {
                                         <View>
                                             <Image 
                                             source={{
-                                                uri: unknownArtistImageUri
+                                                uri: artists.image || unknownArtistImageUri
                                                 }} 
                                             style={styles.artistImage}/>
                                         </View>
@@ -65,7 +65,7 @@ const ArtistsScreen = () => {
                             <Image source={{
                                 uri: unknownArtistImageUri
                             }}
-                                style={utilsStyles.emptyComponentText}
+                                style={utilsStyles.emptyContentText}
                             />
                         </View>
                     }

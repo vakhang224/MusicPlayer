@@ -31,13 +31,7 @@ export const PlaylistsList = ({ playlists = [], onPlaylistPress: handlePlaylistP
             ItemSeparatorComponent={ItemDivider}
             ListEmptyComponent={
                 <View>
-                    <Text style={utilsStyles.emptyContentText}>No playlis here</Text>
-                    <Image
-                        source={{
-                            uri: unknownTracksImageUri
-                        }}
-                        style={utilsStyles.emptyContentImage}
-                    />
+                    <Text style={utilsStyles.emptyContentText}>No playlist here</Text>
                 </View>
             }
             renderItem={({ item: playlist }) => (

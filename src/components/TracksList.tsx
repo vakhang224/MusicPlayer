@@ -68,7 +68,7 @@ export const TracksList = ({ id, tracks, hideQueueControls }: Props) => {
             scrollEnabled={false}
             ListEmptyComponent={
                 <View>
-                    <Text style={utilsStyles.emptyComponentText}>Nothing here!</Text>
+                    <Text style={utilsStyles.emptyContentText}>Nothing here!</Text>
                 </View>
             }
         />

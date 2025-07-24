@@ -9,6 +9,7 @@ export type Playlist = {
 export type Artist = {
     name: string;
     tracks: Track[];
+    image: string;
 }
 
 export type TrackWithPlaylist = Track & {playlists?: string[]}

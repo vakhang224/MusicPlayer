@@ -11,7 +11,7 @@ const ArtistDetailScreen = () => {
     const artist = artists.find((artist) => artist.name === artistName)
 
     if(!artist){
-        console.warn(`Artisit ${artistName} not found!`);
+        console.warn(`Artist ${artistName} not found!`);
         return <Redirect href={`/(tabs)/artists`}/>
     }
 

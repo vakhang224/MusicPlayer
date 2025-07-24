@@ -5,6 +5,8 @@ import { Entypo, Ionicons } from "@expo/vector-icons";
 import React, { Suspense } from "react";
 import { Image, StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { Track, useActiveTrack, useIsPlaying } from "react-native-track-player";
+import { TrackShortcutMenu } from "./TrackShortcutMenu";
+import { Unduplicated } from "./Unduplicated";
 
 // Dynamic import ESM module
 const LoaderKit = React.lazy(() => import("react-native-loader-kit"));
@@ -67,8 +69,11 @@ export const TracksListItem = ({ tracks, onTrackSelected: handleTrackSelect }: P
               </Text>
             )}
           </View>
-
+          <Unduplicated>
+          <TrackShortcutMenu track={tracks}>
           <Entypo name="dots-three-horizontal" size={18} color={colors.icon} />
+          </TrackShortcutMenu>
+          </Unduplicated>
         </View>
       </View>
     </TouchableHighlight>

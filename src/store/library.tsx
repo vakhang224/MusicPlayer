@@ -1,4 +1,4 @@
-import { unknownTracksImageUri } from "@/constants/images";
+import { unknownArtistImageUri, unknownTracksImageUri } from "@/constants/images";
 import { Artist, Playlist, TrackWithPlaylist } from "@/helpers/type";
 import { fetchTracks } from "@/services/trackService";
 import { useMemo, } from "react";
@@ -7,16 +7,36 @@ import { create } from "zustand";
 
 
 interface LibraryState {
-    tracks: TrackWithPlaylist[];
-    toggleTrackFavorite: (track: Track) => void;
-    fetch: () => Promise<void>;
-    addToPlaylist: (track: Track, playlistName: string) => void
+  tracks: TrackWithPlaylist[];
+  toggleTrackFavorite: (track: Track) => void;
+  fetch: () => Promise<void>;
+  addToPlaylist: (track: Track, playlistName: string) => void
 }
 
 export const useLibraryStore = create<LibraryState>((set) => ({
   tracks: [],
-  toggleTrackFavorite: () => {},
-  addToPlaylist: () => {},
+  toggleTrackFavorite: (track) => set((state) => ({
+    tracks: state.tracks.map((currentTrack) => {
+      if (currentTrack.url === track.url) {
+        return {
+          ...currentTrack,
+          rating: currentTrack.rating === 1 ? 0 : 1
+        }
+      }
+      return currentTrack
+    })
+  })),
+  addToPlaylist: (track, playlistName) => set((state) => ({
+    tracks: state.tracks.map((currentTrack) => {
+      if(currentTrack.url === track.url) {
+        return{
+          ...currentTrack,
+          playlist: [...(currentTrack.playlist ?? []), playlistName]
+        }
+      }
+      return currentTrack
+    })
+  })),
   fetch: async () => {
     try {
       const data = await fetchTracks();
@@ -33,7 +53,7 @@ export const useFavorites = () => {
   const toggleTrackFavorite = useLibraryStore((state) => state.toggleTrackFavorite)
 
   const favorites = useMemo(
-    () => tracks.filter((track) => track.rating == 6),
+    () => tracks.filter((track) => track.rating == 1),
     [tracks]
   )
 
@@ -51,9 +71,11 @@ export const useArtists = () => {
       } else {
         acc.push({
           name: track.artist ?? 'Unknown',
-          tracks: [track]
+          tracks: [track],
+          image: track.image ?? unknownArtistImageUri
         })
       }
+
       return acc
     }, [] as Artist[])
   }, [tracks]);
@@ -78,8 +100,11 @@ export const usePlaylists = () => {
           })
         }
       })
+
       return acc
+
     }, [] as Playlist[])
+
   }, [tracks])
 
   const addToPlaylist = useLibraryStore((state) => state.addToPlaylist)

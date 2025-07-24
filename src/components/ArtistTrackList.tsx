@@ -18,14 +18,13 @@ export const ArtistTrackList = ({ artist }: { artist: Artist }) => {
         return artist.tracks.filter(trackTitleFilter(search))
     }, [artist.tracks, search])
 
-
     return (
         <>
             <View style={styles.artistHeaderContainer}>
                 <View style={styles.artworkImageContainer}>
                     <Image
                         source={{
-                            uri: unknownArtistImageUri,
+                            uri: artist.image ? artist.image : unknownArtistImageUri
                         }}
                         style={styles.artistImage}
                     />
@@ -59,10 +58,10 @@ const styles = StyleSheet.create({
         height: 200,
     },
     artistImage: {
-        width: '55%',
+        width: '65%',
         height: '100%',
         resizeMode: 'cover',
-        borderRadius: 256,
+        borderRadius: 128,
     },
     artistNameText: {
         ...defaultStyles.text,
