@@ -1,0 +1,199 @@
+{
+  "login": {
+    "loginTitle": "Đăng nhập",
+    "registerTitle": "Đăng ký",
+    "usernameLabel": "Tên đăng nhập",
+    "displayNameLabel": "Tên hiển thị",
+    "emailLabel": "Email",
+    "passwordLabel": "Mật khẩu",
+    "loginButton": "Đăng nhập",
+    "registerButton": "Đăng ký",
+    "forgotPasswordLink": "Quên mật khẩu?",
+    "registerLink": "Chưa có tài khoản? Đăng ký",
+    "loginLink": "Đã có tài khoản? Đăng nhập",
+    "toast": {
+      "missingInfoLogin": "Vui lòng nhập Tên đăng nhập và Mật khẩu.",
+      "missingInfoRegister": "Vui lòng nhập Tên đăng nhập, Email và Mật khẩu.",
+      "loginFailed": "Đăng nhập thất bại",
+      "loginFailedMessage": "Sai thông tin hoặc lỗi không xác định",
+      "registerSuccess": "Thành công",
+      "registerSuccessMessage": "Đăng ký thành công. Vui lòng đăng nhập.",
+      "registerFailed": "Đăng ký thất bại"
+    }
+  },
+  "profile": {
+    "loading": "Đang tải...",
+    "noUser": "Không có thông tin người dùng.",
+    "usernameLabel": "Tên đăng nhập",
+    "emailLabel": "Email",
+    "settingsButton": "Cài đặt",
+    "logoutButton": "Đăng xuất",
+    "verifiedArtist": "Nghệ sĩ đã xác thực",
+    "toast": {
+      "sessionExpired": "Phiên đăng nhập hết hạn",
+      "sessionExpiredMessage": "Vui lòng đăng nhập lại.",
+      "loadFailed": "Không thể tải thông tin người dùng!",
+      "logoutSuccess": "Thông báo",
+      "logoutSuccessMessage": "Đăng xuất thành công!",
+      "tokenInvalid": "Phiên không hợp lệ",
+      "networkError": "Lỗi mạng"
+    },
+    "upload": {
+      "addButton": "Tải lên bài hát mới",
+      "title": "Tải nhạc lên",
+      "trackNamePlaceholder": "Tên bài hát",
+      "pickAudio": "Chọn file nhạc (.mp3)",
+      "pickImage": "Chọn ảnh bìa (1:1)",
+      "uploading": "Đang tải lên...",
+      "uploadButton": "Tải lên",
+      "audioPickError": "Không thể mở trình chọn file nhạc.",
+      "imagePickError": "Không thể mở thư viện ảnh.",
+      "formError": "Vui lòng điền tên bài hát và chọn đủ file nhạc, file ảnh.",
+      "successMessage": "Đã tải lên \"{{title}}\". Trạng thái: {{verified}}",
+      "verified": "Đã xác thực",
+      "notVerified": "Chưa xác thực",
+      "uploadFailed": "Tải lên thất bại: {{message}}",
+      "audioRequiredError": "Vui lòng chọn một file nhạc.",
+      "unknownSongDefault": "Bài hát không tên"
+    },
+    "avatar": {
+      "updateSuccess": "Cập nhật ảnh đại diện thành công!",
+      "pickCancelled": "Đã hủy chọn ảnh đại diện.",
+      "updateFailed": "Cập nhật ảnh đại diện thất bại: {{message}}",
+      "missingDataError": "Máy chủ không trả về dữ liệu người dùng đã cập nhật.",
+      "networkError": "Yêu cầu mạng thất bại. Vui lòng chờ một lát và thử lại."
+    },
+    "myUploadsButton": "Bài hát đã tải lên"
+  },
+  "myUploads": {
+    "screenTitle": "Bài hát đã tải lên",
+    "fetchError": "Lỗi tải danh sách bài hát: {{message}}",
+    "emptyList": "Bạn chưa tải lên bài hát nào.",
+    "deleteConfirmTitle": "Xóa bài hát",
+    "deleteConfirmMessage": "Bạn có chắc muốn xóa \"{{title}}\" không?",
+    "deleteSuccess": "Đã xóa thành công \"{{title}}\"",
+    "deleteError": "Xóa bài hát thất bại: {{message}}"
+  },
+  "editTrack": {
+    "screenTitle": "Chỉnh sửa bài hát",
+    "parseError": "Lỗi tải dữ liệu bài hát.",
+    "noDataError": "Không tìm thấy dữ liệu bài hát để sửa.",
+    "imagePickError": "Không thể mở thư viện ảnh.",
+    "titleLabel": "Tên bài hát",
+    "titlePlaceholder": "Nhập tên bài hát",
+    "noChanges": "Không có thay đổi nào.",
+    "updateSuccess": "Cập nhật bài hát thành công!",
+    "updateError": "Cập nhật bài hát thất bại: {{message}}",
+    "saveButton": "Lưu thay đổi"
+  },
+  "forgotPassword": {
+    "title": "Đặt lại mật khẩu",
+    "emailLabel": "Email",
+    "sendButton": "Gửi",
+    "sendingButton": "...",
+    "codeLabel": "Mã khôi phục",
+    "newPasswordLabel": "Mật khẩu mới",
+    "resetButton": "Đặt lại mật khẩu",
+    "backLink": "← Quay lại Đăng nhập",
+    "toast": {
+      "enterEmail": "Vui lòng nhập email của bạn",
+      "codeSentSuccess": "Thành công",
+      "codeSentSuccessMessage": "Kiểm tra email của bạn để lấy mã",
+      "codeSentFailed": "Gửi mã thất bại",
+      "missingInfo": "Vui lòng nhập email, mã và mật khẩu mới",
+      "resetSuccess": "Thành công",
+      "resetSuccessMessage": "Mật khẩu đã được đặt lại",
+      "resetFailed": "Đặt lại mật khẩu thất bại"
+    }
+  },
+  "tabs": {
+    "favorites": "Yêu thích",
+    "playlists": "Danh sách phát",
+    "songs": "Bài hát",
+    "artists": "Nghệ sĩ"
+  },
+  "menu": {
+    "addToFavorite": "Thêm vào Yêu thích",
+    "removeFromFavorite": "Xóa khỏi Yêu thích",
+    "addToPlaylist": "Thêm vào Danh sách phát",
+    "removeFromPlaylist": "Xóa khỏi Danh sách phát"
+  },
+  "playlist": {
+    "newPlaylistTitle": "Danh sách phát mới",
+    "newPlaylistPrompt": "Nhập tên cho danh sách phát của bạn",
+    "addPlaylistButton": "Thêm DS phát",
+    "placeholder": "Nhập tên danh sách phát",
+    "emptyList": "Không có danh sách phát nào",
+    "deleteTitle": "Xóa Danh sách phát",
+    "deleteMessage": "Bạn có chắc muốn xóa \"{{name}}\" không?",
+    "deleteButton": "Xóa"
+  },
+  "queue": {
+    "play": "Phát",
+    "shuffle": "Trộn bài"
+  },
+  "tracks": {
+    "emptyList": "Không tìm thấy bài hát nào",
+    "noMore": "Đã hết bài hát",
+    "recommended": "Dành cho bạn",
+    "allSongsTitle": "Tất cả bài hát"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "selectLanguage": "Chọn ngôn ngữ",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt",
+    "theme": "Giao diện",
+    "security": "Bảo mật",
+    "changePassword": "Đổi mật khẩu",
+    "change": "Đổi",
+    "placeholders": {
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmNewPassword": "Xác nhận mật khẩu mới"
+    },
+    "errors": {
+      "passwordTooShort": "Mật khẩu mới phải có ít nhất 6 ký tự",
+      "passwordMismatch": "Mật khẩu mới và xác nhận không khớp",
+      "noUser": "Không tìm thấy người dùng hoặc chưa đăng nhập",
+      "changeFailed": "Đổi mật khẩu thất bại"
+    },
+    "success": {
+      "passwordChanged": "Đổi mật khẩu thành công"
+    }
+  },
+  "common": {
+    "errorTitle": "Lỗi",
+    "successTitle": "Thành công",
+    "missingInfoTitle": "Thiếu thông tin",
+    "cancel": "Hủy",
+    "create": "Tạo",
+    "permissionDeniedTitle": "Quyền bị từ chối",
+    "mediaLibraryPermissionDenied": "Cần quyền truy cập thư viện đa phương tiện!",
+    "infoTitle": "Thông tin",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "or": "- HOẶC -",
+    "skip": "Bỏ qua"
+  },
+  "songs": {
+    "searchPlaceholder": "Tìm kiếm bài hát"
+  },
+  "artists": {
+    "searchPlaceholder": "Tìm kiếm nghệ sĩ",
+    "emptyList": "Không tìm thấy nghệ sĩ!"
+  },
+  "favorites": {
+    "searchPlaceholder": "Tìm bài hát yêu thích của bạn"
+  },
+  "playlists": {
+    "searchPlaceholder": "Tìm danh sách phát của bạn"
+  },
+  "genreModal": {
+    "title": "Thêm thể loại",
+    "subtitle": "Chọn thể loại có sẵn hoặc nhập thể loại mới.",
+    "placeholder": "Nhập thể loại mới...",
+    "genreRequired": "Vui lòng nhập thể loại."
+  }
+}

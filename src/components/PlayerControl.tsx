@@ -1,64 +1,55 @@
-import { colors } from "@/constants/token"
-import { FontAwesome, FontAwesome6 } from "@expo/vector-icons"
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native"
-import TrackPlayer, { useIsPlaying } from "react-native-track-player"
+// src/components/PlayerControl.tsx
+import React from "react";
+import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-type PlayerControlProps = {
-    style?: ViewStyle
-}
+export type PlayerButtonProps = {
+  iconSize?: number;
+  onPress?: () => void;
+  isPlaying?: boolean;
+};
 
-type PlayerButtonProps = {
-    style?: ViewStyle
-    iconSize?: number
-}
+export const PlayPauseButton = ({ iconSize = 20, onPress, isPlaying }: PlayerButtonProps) => {
+  // Ensure onPress is a no-arg function; TouchableOpacity in RN doesn't provide a DOM event
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.button} activeOpacity={0.8}>
+      <Ionicons name={isPlaying ? "pause" : "play"} size={iconSize} color="#fff" />
+    </TouchableOpacity>
+  );
+};
 
-export const PlayerControl = ({ style }: PlayerControlProps) => {
-    return (
-        <View style={[styles.container, style]}>
-            <View style={styles.row}>
-                <SkipToBackButton/>
-                <PlayPauseButton/>
-                <SkipToNextButton/>
-            </View>
-        </View>
-    );
-}
+export const SkipToBackButton = ({ iconSize = 20, onPress }: PlayerButtonProps) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.button} activeOpacity={0.8}>
+      <Ionicons name="play-skip-back" size={iconSize} color="#fff" />
+    </TouchableOpacity>
+  );
+};
 
-export const PlayPauseButton = ({style, iconSize}: PlayerButtonProps) => {
-    const {playing} = useIsPlaying();
+export const SkipToNextButton = ({ iconSize = 20, onPress }: PlayerButtonProps) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.button} activeOpacity={0.8}>
+      <Ionicons name="play-skip-forward" size={iconSize} color="#fff" />
+    </TouchableOpacity>
+  );
+};
 
-    return (
-        <View style={[{ height: iconSize }]}>
-            <TouchableOpacity activeOpacity={0.85} onPress={playing ? TrackPlayer.pause : TrackPlayer.play}>
-                <FontAwesome name={playing ? 'pause' : 'play'} size={iconSize} color={colors.text}/>
-            </TouchableOpacity>
-        </View>
-    );
-}
-
-export const SkipToNextButton = ({style, iconSize = 30}: PlayerButtonProps) => {
-    return (
-        <TouchableOpacity activeOpacity={0.7} onPress={() =>TrackPlayer.skipToNext()}>
-            <FontAwesome6 name="forward" size={iconSize} color={colors.text} />
-        </TouchableOpacity>
-    );
-}
-
-export const SkipToBackButton = ({style, iconSize = 30}: PlayerButtonProps) => {
-    return (
-        <TouchableOpacity activeOpacity={0.7} onPress={() => TrackPlayer.skipToPrevious()}>
-            <FontAwesome6 name="backward" size={iconSize} color={colors.text} />
-        </TouchableOpacity>
-    );
-}
+// Optional container if you want to group controls
+export const PlayerControl = ({ children }: { children?: React.ReactNode }) => {
+  return <View style={styles.container}>{children}</View>;
+};
 
 const styles = StyleSheet.create({
-    container: {
-        width: '100%'
-    },
-    row:{
-      flexDirection: 'row',
-      justifyContent: 'space-evenly',
-      alignItems:'center'  
-    }
-})
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  button: {
+    padding: 8,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
+export default PlayerControl;

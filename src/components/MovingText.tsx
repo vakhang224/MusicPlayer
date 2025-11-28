@@ -12,16 +12,28 @@ export const MovingText = ({ text, animationThreshold,style }: MovingTextProps) 
     const shouldAnimate = text.length >= animationThreshold;
     const textWidth = text.length * 3;
 
+    // EXTRA: push further left and slow down so the text travels deeper to the left
+    const extraLeft = 100; // increase this to push further left
+    const durationMs = 9000; // increase duration so travel is slower / longer
+
     useEffect(() => {
         if (!shouldAnimate) return;
 
-        translateX.value = withDelay(1000, withRepeat(withTiming(-textWidth, { duration: 5000, easing: Easing.linear }), -1, true))
+        // animate to a deeper left position and take longer to do so
+        translateX.value = withDelay(
+            1000,
+            withRepeat(
+                withTiming(-(textWidth + extraLeft), { duration: durationMs, easing: Easing.linear }),
+                -1,
+                true
+            )
+        );
 
         return () => {
             cancelAnimation(translateX);
             translateX.value = 0;
         }
-    }, [shouldAnimate,translateX,text,animationThreshold,textWidth]);
+    }, [shouldAnimate, translateX, text, animationThreshold, textWidth, extraLeft, durationMs]);
 
     const animatedStyle = useAnimatedStyle(() => {
         return {
@@ -39,7 +51,8 @@ export const MovingText = ({ text, animationThreshold,style }: MovingTextProps) 
             }
         ]}>
             {text}
-
         </Animated.Text>
     );
 }
+
+export default MovingText;

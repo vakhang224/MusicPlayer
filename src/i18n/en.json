@@ -1,0 +1,199 @@
+{
+  "login": {
+    "loginTitle": "Login",
+    "registerTitle": "Sign Up",
+    "usernameLabel": "Username",
+    "displayNameLabel": "Display Name",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "forgotPasswordLink": "Forgot Password?",
+    "registerLink": "Don't have an account? Sign Up",
+    "loginLink": "Already have an account? Login",
+    "toast": {
+      "missingInfoLogin": "Please enter Username and Password.",
+      "missingInfoRegister": "Please enter Username, Email, and Password.",
+      "loginFailed": "Login Failed",
+      "loginFailedMessage": "Incorrect credentials or unknown error",
+      "registerSuccess": "Success",
+      "registerSuccessMessage": "Registered successfully. Please login.",
+      "registerFailed": "Registration Failed"
+    }
+  },
+  "profile": {
+    "loading": "Loading...",
+    "noUser": "No user information.",
+    "usernameLabel": "Username",
+    "emailLabel": "Email",
+    "settingsButton": "Settings",
+    "logoutButton": "Logout",
+    "verifiedArtist": "Verified Artist",
+    "toast": {
+      "sessionExpired": "Session Expired",
+      "sessionExpiredMessage": "Please login again.",
+      "loadFailed": "Failed to load user info!",
+      "logoutSuccess": "Success",
+      "logoutSuccessMessage": "Logged out successfully!",
+      "tokenInvalid": "Invalid Session",
+      "networkError": "Network Error"
+    },
+    "upload": {
+      "addButton": "Upload a new track",
+      "title": "Upload Track",
+      "trackNamePlaceholder": "Track Name",
+      "pickAudio": "Select Audio File (.mp3)",
+      "pickImage": "Select Artwork (1:1)",
+      "uploading": "Uploading...",
+      "uploadButton": "Upload",
+      "audioPickError": "Could not open audio picker.",
+      "imagePickError": "Could not open image library.",
+      "formError": "Please fill in the track name and select both audio and image files.",
+      "successMessage": "Successfully uploaded \"{{title}}\". Status: {{verified}}",
+      "verified": "Verified",
+      "notVerified": "Not Verified",
+      "uploadFailed": "Upload failed: {{message}}",
+      "audioRequiredError": "Please select an audio file.",
+      "unknownSongDefault": "Unknown Song"
+    },
+    "avatar": {
+      "updateSuccess": "Avatar updated successfully!",
+      "pickCancelled": "Avatar selection cancelled.",
+      "updateFailed": "Failed to update avatar: {{message}}",
+      "missingDataError": "Server did not return updated user data.",
+      "networkError": "Network request failed. Please wait a moment and try again."
+    },
+    "myUploadsButton": "My Uploads"
+  },
+  "myUploads": {
+    "screenTitle": "My Uploads",
+    "fetchError": "Failed to load uploaded songs: {{message}}",
+    "emptyList": "You haven't uploaded any songs yet.",
+    "deleteConfirmTitle": "Delete Song",
+    "deleteConfirmMessage": "Are you sure you want to delete \"{{title}}\"?",
+    "deleteSuccess": "Successfully deleted \"{{title}}\"",
+    "deleteError": "Failed to delete song: {{message}}"
+  },
+  "editTrack": {
+    "screenTitle": "Edit Song",
+    "parseError": "Error loading track data.",
+    "noDataError": "No track data found to edit.",
+    "imagePickError": "Could not open image library.",
+    "titleLabel": "Song Title",
+    "titlePlaceholder": "Enter song title",
+    "noChanges": "No changes detected.",
+    "updateSuccess": "Song updated successfully!",
+    "updateError": "Failed to update song: {{message}}",
+    "saveButton": "Save Changes"
+  },
+  "forgotPassword": {
+    "title": "Reset Password",
+    "emailLabel": "Email",
+    "sendButton": "Send",
+    "sendingButton": "...",
+    "codeLabel": "Reset Code",
+    "newPasswordLabel": "New Password",
+    "resetButton": "Reset Password",
+    "backLink": "← Back to Login",
+    "toast": {
+      "enterEmail": "Please enter your email",
+      "codeSentSuccess": "Success",
+      "codeSentSuccessMessage": "Check your email for the reset code",
+      "codeSentFailed": "Failed to send reset code",
+      "missingInfo": "Please enter email, code, and new password",
+      "resetSuccess": "Success",
+      "resetSuccessMessage": "Password has been reset",
+      "resetFailed": "Failed to reset password"
+    }
+  },
+  "tabs": {
+    "favorites": "Favorites",
+    "playlists": "Playlists",
+    "songs": "Songs",
+    "artists": "Artists"
+  },
+  "menu": {
+    "addToFavorite": "Add to favorite",
+    "removeFromFavorite": "Remove from favorite",
+    "addToPlaylist": "Add to playlist",
+    "removeFromPlaylist": "Remove from playlist"
+  },
+  "playlist": {
+    "newPlaylistTitle": "New Playlist",
+    "newPlaylistPrompt": "Enter a name for your playlist",
+    "addPlaylistButton": "Add Playlist",
+    "placeholder": "Enter playlist name",
+    "emptyList": "No playlist here",
+    "deleteTitle": "Delete Playlist",
+    "deleteMessage": "Are you sure you want to delete \"{{name}}\"?",
+    "deleteButton": "Delete"
+  },
+  "queue": {
+    "play": "Play",
+    "shuffle": "Shuffle"
+  },
+  "tracks": {
+    "emptyList": "Nothing here!",
+    "recommended": "Recommended for you",
+    "noMore": "No more songs",
+    "allSongsTitle": "All Songs"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "vietnamese": "Vietnamese",
+    "theme": "Theme",
+    "security": "Security",
+    "changePassword": "Change password",
+    "change": "Change",
+    "placeholders": {
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password"
+    },
+    "errors": {
+      "passwordTooShort": "New password must be at least 6 characters",
+      "passwordMismatch": "New password and confirmation do not match",
+      "noUser": "User not found or not logged in",
+      "changeFailed": "Failed to change password"
+    },
+    "success": {
+      "passwordChanged": "Password changed successfully"
+    }
+  },
+  "common": {
+    "errorTitle": "Error",
+    "successTitle": "Success",
+    "missingInfoTitle": "Missing Information",
+    "cancel": "Cancel",
+    "create": "Create",
+    "permissionDeniedTitle": "Permission Denied",
+    "mediaLibraryPermissionDenied": "Permission to access the media library is required!",
+    "infoTitle": "Information",
+    "delete": "Delete",
+    "save": "Save",
+    "or": "- OR -",
+    "skip": "Skip"
+  },
+  "songs": {
+    "searchPlaceholder": "Search songs"
+  },
+  "artists": {
+    "searchPlaceholder": "Search artists",
+    "emptyList": "No artist found!"
+  },
+  "favorites": {
+    "searchPlaceholder": "Find your favorite song"
+  },
+  "playlists": {
+    "searchPlaceholder": "Find your playlist"
+  },
+  "genreModal": {
+    "title": "Add Genre",
+    "subtitle": "Choose an existing genre or enter a new one.",
+    "placeholder": "Enter a new genre...",
+    "genreRequired": "Please enter a genre."
+  }
+}

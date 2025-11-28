@@ -22,13 +22,16 @@
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.vakhang224.MusicPlayer"
+      "package": "com.vakhang224.MusicPlayer",
+      "usesCleartextTraffic": true 
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-secure-store",
+      "expo-localization"
     ],
     "experiments": {
       "typeRoutes": true,

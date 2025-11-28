@@ -7,6 +7,7 @@ export const colors = {
     maxTrackTintColor: 'rgba(255,255,255,0.4)',
     minTrackTintColor: 'rgba(255,255,255,0.6)',
     searchBarBackground: '#181818',
+    card: "#1E1E1E", // 🆕 thêm dòng này
 }
 
 export const fontSize = {
