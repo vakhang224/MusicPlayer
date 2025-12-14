@@ -1,5 +1,7 @@
-import { registerRootComponent } from 'expo';
+import { disableErrorBox } from "./src/utils/DisableErrorBox"; 
+disableErrorBox();  // <- TẮT REDBOX TRƯỚC KHI LOAD APP
 
+import { registerRootComponent } from 'expo';
 import App from './src/app/_layout';
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

@@ -21,6 +21,11 @@ const ForgotPasswordModule: React.FC<ForgotPasswordProps> = ({ onDone }) => {
   const [newPassword, setNewPassword] = useState("");
   const [sending, setSending] = useState(false);
 
+  // Simple email regex (nhẹ, không strict quá)
+  const isValidEmail = (email: string) => {
+    return /^\S+@\S+\.\S+$/.test(email);
+  };
+
   const handleRequestReset = async () => {
     if (!email) {
       Toast.show({
@@ -30,6 +35,17 @@ const ForgotPasswordModule: React.FC<ForgotPasswordProps> = ({ onDone }) => {
       });
       return;
     }
+
+    // 🔒 Check email format
+    if (!isValidEmail(email)) {
+      Toast.show({
+        type: "error",
+        text1: "Email không hợp lệ",
+        text2: "Vui lòng nhập đúng định dạng email"
+      });
+      return;
+    }
+
     try {
       setSending(true);
       console.log("📩 Gửi yêu cầu reset mật khẩu với email:", email);
@@ -61,6 +77,27 @@ const ForgotPasswordModule: React.FC<ForgotPasswordProps> = ({ onDone }) => {
       });
       return;
     }
+
+    // 🔒 Check email format (again to be safe)
+    if (!isValidEmail(email)) {
+      Toast.show({
+        type: "error",
+        text1: "Email không hợp lệ",
+        text2: "Email phải đúng định dạng trước khi đổi mật khẩu"
+      });
+      return;
+    }
+
+    // 🔐 Check password >= 7 chars
+    if (newPassword.length < 6) {
+      Toast.show({
+        type: "error",
+        text1: "Mật khẩu quá ngắn",
+        text2: "Mật khẩu mới phải có ít nhất 6 ký tự"
+      });
+      return;
+    }
+
     try {
       console.log("🔐 Gửi yêu cầu reset mật khẩu:", { email, code, newPassword });
       const res = await resetPassword(email, code, newPassword);

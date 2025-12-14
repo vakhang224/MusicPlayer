@@ -51,7 +51,6 @@ export default function IndexScreen() {
         await login();
         setPassword("");
 
-        // Ensure recommendations are reloaded for the newly authenticated user
         try {
           await useLibraryStore.getState().loadRecommendations();
         } catch (e) {
@@ -84,11 +83,49 @@ export default function IndexScreen() {
       return;
     }
 
+    // --------------------
+    // VALIDATION
+    // --------------------
+    if (!email.toLowerCase().endsWith("@gmail.com")) {
+      Toast.show({
+        type: "error",
+        text1: "Email không hợp lệ",
+        text2: "Email phải có dạng @gmail.com",
+      });
+      return;
+    }
+
+    if (password.length < 6) {
+      Toast.show({
+        type: "error",
+        text1: "Mật khẩu quá ngắn",
+        text2: "Mật khẩu phải có ít nhất 6 ký tự",
+      });
+      return;
+    }
+
+    if (username.length < 3) {
+      Toast.show({
+        type: "error",
+        text1: "Tên đăng nhập không hợp lệ",
+        text2: "Tên đăng nhập phải có ít nhất 3 ký tự",
+      });
+      return;
+    }
+
+    if (name && name.length < 2) {
+      Toast.show({
+        type: "error",
+        text1: "Tên hiển thị không hợp lệ",
+        text2: "Tên phải có ít nhất 2 ký tự",
+      });
+      return;
+    }
+    // --------------------
+
     try {
       const res = await register(username, email, password, name);
 
-      // Consider registration successful if server returns id OR
-      // returns a message that clearly indicates success (handle flaky API)
       const messageLower = (res?.message || "").toString().toLowerCase();
       const looksLikeSuccess =
         Boolean(res && (res.id || res.userId || res.accessToken)) ||
@@ -104,27 +141,25 @@ export default function IndexScreen() {
           text2: t("login.toast.registerSuccessMessage"),
         });
 
-        // Clear form and switch to login view
         setIsRegister(false);
         setPassword("");
         setEmail("");
         setName("");
-        // Navigate user to login route (index is login screen). If you have a dedicated login route, update path.
+
         try {
-          router.push("/"); // push root (login). Adjust if your login route is different.
+          router.push("/");
         } catch (navErr) {
           console.warn("Navigation after register failed:", navErr);
         }
         return;
       }
 
-      // If not successful, determine a useful error message
       const serverMsg = res?.message;
       const isErrorMessage =
         typeof serverMsg === "string" &&
         serverMsg.trim() !== "" &&
-        !serverMsg.toString().toLowerCase().includes("thành công") &&
-        !serverMsg.toString().toLowerCase().includes("success");
+        !serverMsg.toLowerCase().includes("thành công") &&
+        !serverMsg.toLowerCase().includes("success");
 
       Toast.show({
         type: "error",
@@ -141,7 +176,6 @@ export default function IndexScreen() {
     }
   };
 
-  // Show Forgot Password screen if toggled
   if (showForgotPassword) {
     return (
       <Animated.View
@@ -154,7 +188,6 @@ export default function IndexScreen() {
     );
   }
 
-  // JSX
   return (
     <View style={styles.container}>
       <Text style={styles.title}>

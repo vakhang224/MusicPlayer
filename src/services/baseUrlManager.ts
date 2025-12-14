@@ -5,7 +5,7 @@ let cachedBaseUrl: string | null = null;
 // <<< SỬA TẠI ĐÂY >>>
 // Dùng CHÍNH XÁC IP LAN bạn đã điền ở file serverConfig.js
 // (Ví dụ: 'http://192.168.1.10:8080')
-const DEFAULT_CONFIG_SERVER = "http://192.168.1.21:8080";
+const DEFAULT_CONFIG_SERVER = "http://192.168.1.9:8080";
 
 /**
  * Hàm khởi tạo: gọi server /config/base-url để lấy BASE_URL thật

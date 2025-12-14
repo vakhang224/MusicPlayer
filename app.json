@@ -7,6 +7,10 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "developmentClient": true,
+    "devClient":{
+      "silent": true
+    },
     "scheme": "musicplayer",
     "splash": {
       "image": "./assets/splash-icon.png",

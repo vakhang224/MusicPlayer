@@ -28,7 +28,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/utils/DisableErrorBox.js"  ],
   "exclude": [
     "node_modules"
   ]
